@@ -1,0 +1,30 @@
+// Error message
+
+➜  01 JobKit node run start
+internal/modules/cjs/loader.js:969
+  throw err;
+  ^
+
+Error: Cannot find module '/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/run'
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:966:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:842:27)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+    at internal/main/run_main_module.js:17:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+
+
+// My Solution
+
+1. Check if all dependencies is installed. If unsure, 
+1) Delete directory 'node_modules'.
+2) npm install 
+3) note: all dependencies must be correctly saved in package.json 
+
+2. Check if path is correctly specified. 
+
+
+
+
