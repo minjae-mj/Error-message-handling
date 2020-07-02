@@ -26,6 +26,7 @@ Error: Cannot find module '/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 
 3) note: all dependencies must be correctly saved in package.json 
 
 2. Check if path is correctly specified. 
+3. Check if you used right terminology in the terminal. (e.g. npm run dev (O), node run dev (X)) 
 
 
 
