@@ -1,0 +1,4 @@
+// My Solution.
+1. Check if "name" attribute has been set in your HTML file. 
+
+Found this solution @ https://stackoverflow.com/questions/31407425/passport-js-always-executing-failureredirect
