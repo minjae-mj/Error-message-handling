@@ -1,0 +1,25 @@
+
+
+// Error message
+
+      throw new TypeError('Router.use() requires a middleware function but got a ' + gettype(fn))
+      ^
+
+TypeError: Router.use() requires a middleware function but got a Object
+    at Function.use (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/express/lib/router/index.js:458:13)
+    at Function.<anonymous> (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/express/lib/application.js:220:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/express/lib/application.js:217:7)
+    at Object.<anonymous> (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/dist/app.js:65:5)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+    at internal/main/run_main_module.js:17:47
+[nodemon] app crashed - waiting for file changes before starting...
+
+
+// Solution. 
+
+1) Be sure to add < module.exports = router; > at the end of router file. 
