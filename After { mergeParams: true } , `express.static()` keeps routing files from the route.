@@ -1,0 +1,48 @@
+
+// Problem 
+
+When I load "http://localhost:8080/companies/new", 
+it throws error message saying "Cannot Get http://localhost:8080/companies/assets/img/logo-clear.png".
+
+express.static keeps looking for .png file from the route, so I figured there is a problem with the path. 
+I simply fixed by letting src start with "/", which will then make it look directory from the root folder. 
+For reference, my file structure is designed as below: 
+
+==================
+ public 
+ ㄴ assets
+     ㄴ img
+          ㄴ (multiple .png .jpg files) 
+ ㄴ css
+     ㄴ style.css
+ ㄴ js
+==================
+
+==================
+In dev tools, it looks like this.
+
+localhost:8080
+ ㄴ assets/img
+ ㄴ css
+   ㄴ style.css
+ ㄴ companies
+   ㄴ new (current) 
+==================
+
+// My Code Before 
+
+<body>
+    <nav class="nav">
+        <div class="nav__container">
+            <div class="nav__logo-box">
+                <a href="/" class="nav__home"></a>
+                <img src="../assets/img/logo-clear.png" alt="logo" class="nav__logo">
+                
+// My Code After (Solution)
+
+<body>
+    <nav class="nav">
+        <div class="nav__container">
+            <div class="nav__logo-box">
+                <a href="/" class="nav__home"></a>
+                <img src="/assets/img/logo-clear.png" alt="logo" class="nav__logo">
