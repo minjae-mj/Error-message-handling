@@ -1,0 +1,59 @@
+
+
+// Error message: 
+
+TypeError: /Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/dist/views/review/new.ejs:7
+    5|             <div class="newreview">
+    6|                 <h3 class="heading-tertiary u-margin-bottom-small">
+ >> 7|                     How's your experience with <%= company.name %>? 
+    8|                 </h3>
+
+Cannot read property 'name' of null
+    at eval (eval at compile (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/ejs/lib/ejs.js:661:12), <anonymous>:11:34)
+    at new (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/ejs/lib/ejs.js:691:17)
+    at tryHandleCache (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/ejs/lib/ejs.js:272:36)
+    at View.exports.renderFile [as engine] (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/ejs/lib/ejs.js:489:10)
+    at View.render (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/express/lib/view.js:135:8)
+    at tryRender (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/express/lib/application.js:640:10)
+    at Function.render (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/express/lib/application.js:592:3)
+    at ServerResponse.render (/Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/express/lib/response.js:1012:7)
+    at /Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/dist/routes/reviews.js:21:16
+    at /Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/mongoose/lib/model.js:4882:16
+    at /Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/mongoose/lib/model.js:4882:16
+    at /Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/mongoose/lib/helpers/promiseOrCallback.js:24:16
+    at /Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/mongoose/lib/model.js:4905:21
+    at /Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/mongoose/lib/query.js:4390:11
+    at /Users/Dear_Minjae/Desktop/Web dev/MinJae Project/01 JobKit/node_modules/kareem/index.js:135:16
+    at processTicksAndRejections (internal/process/task_queues.js:79:11)
+
+
+// My code when error occured: 
+    
+      const express = require('express'),
+      router = express.Router(),
+      Company = require('../models/company'); 
+
+      // routes in this file start with "/companies/:id/reviews"
+
+          router.get('/new', (req, res) => {
+              Company.findById(req.params.id, (err, foundCompany) => {
+                 if(err) {
+                     console.log(err);
+                 } else {
+                     console.log(req.params.id); // this was shown as undefined.  
+                     res.render('review/new', {company: foundCompany}); 
+                 }
+              }); 
+          }); 
+
+module.exports = router; 
+    
+
+// My solution: 
+    
+    1. const express = require('express'); 
+       const router = express.Router({mergeParams: true}); <- edited. 
+       
+       This enabled to merge params from the other routers, so then we'll be able to access to read `:id` of `/companies/:id/reviews/new`. 
+       
+       
